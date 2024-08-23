@@ -1,0 +1,111 @@
+@model CRUD_Application.Models.Account
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>Edit Account</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+             <!-- Read-only field for Account Number -->
+            <div class="form-group">
+                <label asp-for="AccountNumber" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="AccountNumber" class="form-control" id="AccountNumber" type="text" readonly />
+                    <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                </div>
+            </div>
+            
+            <!-- First Name -->
+            <div class="form-group">
+                <label asp-for="FirstName" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="FirstName" class="form-control" id="FirstName" type="text" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Last Name -->
+            <div class="form-group">
+                <label asp-for="LastName" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="LastName" class="form-control" id="LastName" type="text" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- City -->
+            <div class="form-group">
+                <label asp-for="City" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="City" class="form-control" id="City" type="text" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- State -->
+            <div class="form-group">
+                <label asp-for="State" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="State" class="form-control" id="State" type="text" />
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Date of Opening -->
+            <div class="form-group">
+                <label asp-for="DateOfOpening" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="DateOfOpening" class="form-control" id="DateOfOpening" type="date" />
+                    <span asp-validation-for="DateOfOpening" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Amount -->
+            <div class="form-group">
+                <label asp-for="Amount" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="Amount" class="form-control" id="Amount" type="number" step="0.01" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Account Type -->
+            <div class="form-group">
+                <label asp-for="AccountType" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="AccountType" class="form-control" id="AccountType" type="text" />
+                    <span asp-validation-for="AccountType" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Status -->
+            <div class="form-group">
+                <label asp-for="Status" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="Status" class="form-control" id="Status" type="text" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

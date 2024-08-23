@@ -1,0 +1,79 @@
+@model IEnumerable<CRUD_Application.Models.Account>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1 style="background-color: green; color: white;">ASP.NET MVC Web Application for BANK | MySQL Database</h1>
+<hr />
+<p>
+    <a class="btn btn-sm btn-danger" asp-action="Create">Add New</a>
+</p>
+@{
+    if (TempData["insert_message"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Account Added Successfully..!</strong> @TempData["insert_message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    if (TempData["update_message"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Account Updated Successfully..!</strong> @TempData["update_message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+     if (TempData["delete_message"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Account Deleted Successfully..!</strong> @TempData["delete_message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+}
+<table id="tblCategories" class="BlueGreen" border="1">
+    <thead>
+        <tr>
+            <th>Account Number</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Date of Opening</th>
+            <th>Amount</th>
+            <th>Account Type</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.AccountNumber</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.City</td>
+                    <td>@item.State</td>
+                    <td>@item.DateOfOpening.ToString("yyyy-MM-dd")</td>
+                    <td>@item.Amount</td>
+                    <td>@item.AccountType</td>
+                    <td>@item.Status</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.AccountNumber }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.AccountNumber }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.AccountNumber })
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="10">No data available</td>
+            </tr>
+        }
+    </tbody>
+</table>
